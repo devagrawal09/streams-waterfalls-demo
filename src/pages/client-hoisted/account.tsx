@@ -1,7 +1,21 @@
-import { Link } from "waku";
+"use client";
 
-export default async function AccountDashboard() {
-  const accountData = await getAccountData();
+import { clientApi } from "../../data";
+import { AccountDetailsSkeleton } from "../../skeletons";
+import { useQuery } from "../../hooks";
+
+export default function AccountDashboard() {
+  if (typeof window === "undefined") {
+    return null;
+  }
+
+  console.log(`<AccountDashboard />`);
+
+  const accountData = useQuery(clientApi.getAccountData);
+
+  if (!accountData) {
+    return <AccountDetailsSkeleton />;
+  }
 
   return (
     <div className="w-full px-8">
@@ -10,7 +24,7 @@ export default async function AccountDashboard() {
         <div className="rounded px-8 py-2">
           <h2 className="text-center text-3xl">My Orders</h2>
           <div className="mt-4">
-            {accountData.orders.map((order, index) => (
+            {accountData.orders.map((order: any, index: number) => (
               <div
                 key={index}
                 className="mb-4 flex gap-8 cursor-pointer hover:shadow-lg transition-shadow"
@@ -49,38 +63,3 @@ export default async function AccountDashboard() {
     </div>
   );
 }
-
-const getAccountData = async () => {
-  const accountData = {
-    orders: [
-      {
-        id: "1234",
-        date: "Jan 1, 2021",
-        total: "59.99",
-      },
-      {
-        id: "2345",
-        date: "Feb 12, 2021",
-        total: "89.99",
-      },
-      {
-        id: "3456",
-        date: "Mar 23, 2021",
-        total: "99.99",
-      },
-    ],
-    details: {
-      name: "John Doe",
-      email: "john.doe@example.com",
-      address: "123 Main St, Anytown, USA",
-    },
-  };
-
-  return accountData;
-};
-
-export const getConfig = async () => {
-  return {
-    render: "static",
-  };
-};

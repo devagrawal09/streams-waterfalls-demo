@@ -14,19 +14,19 @@ interface ProductData {
 }
 
 interface FeaturedProductProps {
-  featuredData: ProductData | null;
+  featuredData: ProductData | undefined;
 }
 
 interface TrendingProductsProps {
-  trendingData: ProductData[] | null;
+  trendingData: ProductData[] | undefined;
 }
 
 interface ForYouProductsProps {
-  forYouData: ProductData[] | null;
+  forYouData: ProductData[] | undefined;
 }
 
 interface ProductDetailsProps {
-  product: ProductData | null;
+  product: ProductData | undefined;
 }
 
 export const FeaturedProduct: React.FC<FeaturedProductProps> = ({
@@ -37,7 +37,7 @@ export const FeaturedProduct: React.FC<FeaturedProductProps> = ({
   if (!featuredData) return <FeaturedProductSkeleton />;
 
   return (
-    <Link to="/hoisted/product">
+    <Link to="/client-hoisted/product">
       <div className="mb-4 gap-8 cursor-pointer hover:shadow-lg transition-shadow">
         <div className="w-full h-64 bg-gray-400 bg-gradient-to-tr from-orange-500 to-yellow-300 rounded" />
         <div className="text-right m-2">
@@ -68,7 +68,7 @@ export const TrendingProducts: React.FC<TrendingProductsProps> = ({
   return (
     <>
       {trendingData?.map((product, index) => (
-        <Link to="/hoisted/product" key={index}>
+        <Link to="/client-hoisted/product" key={index}>
           <div className="mb-4 flex gap-8 cursor-pointer hover:shadow-lg transition-shadow">
             <div className="w-20 bg-gray-400 bg-gradient-to-tr from-red-400 to-orange-200 rounded" />
             <div className="grow">
@@ -101,7 +101,7 @@ export const ForYouProducts: React.FC<ForYouProductsProps> = ({
   return (
     <>
       {forYouData?.map((product, index) => (
-        <Link to="/hoisted/product" key={index}>
+        <Link to="/client-hoisted/product" key={index}>
           <div className="mb-4 flex gap-8 cursor-pointer hover:shadow-lg transition-shadow">
             <div className="w-20 bg-gray-400 bg-gradient-to-tr from-indigo-400 to-cyan-200 rounded" />
             <div className="grow">

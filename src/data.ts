@@ -3,8 +3,8 @@ const timeoutPromise = (ms: number) =>
 
 const createApi = (timeout: number) => {
   const getTrendingData = async () => {
-    console.log(`getTrendingData()`);
-    await timeoutPromise(timeout);
+    // console.log(`getTrendingData()`);
+    await timeoutPromise(timeout * 2);
     const trendingData = [
       {
         name: "Product 1",
@@ -26,13 +26,13 @@ const createApi = (timeout: number) => {
       },
     ];
 
-    console.log(`getTrendingData() completed`);
+    // console.log(`getTrendingData() completed`);
     return trendingData;
   };
 
   const getForYouData = async () => {
-    console.log(`getForYouData()`);
-    await timeoutPromise(timeout);
+    // console.log(`getForYouData()`);
+    await timeoutPromise(timeout * 1.5);
     const forYouData = [
       {
         name: "Product A",
@@ -54,14 +54,14 @@ const createApi = (timeout: number) => {
       },
     ];
 
-    console.log(`getForYouData() completed`);
+    // console.log(`getForYouData() completed`);
     return forYouData;
   };
 
   const getFeaturedProductData = async () => {
-    console.log(`getFeaturedProductData()`);
+    // console.log(`getFeaturedProductData()`);
     await timeoutPromise(timeout);
-    console.log(`getFeaturedProductData() completed`);
+    // console.log(`getFeaturedProductData() completed`);
     return {
       name: "Featured product",
       description: "Featured description",
@@ -71,7 +71,7 @@ const createApi = (timeout: number) => {
   };
 
   const getAccountData = async () => {
-    console.log(`getAccountData()`);
+    // console.log(`getAccountData()`);
     await timeoutPromise(timeout);
     const accountData = {
       orders: [
@@ -98,12 +98,12 @@ const createApi = (timeout: number) => {
       },
     };
 
-    console.log(`getAccountData() completed`);
+    // console.log(`getAccountData() completed`);
     return accountData;
   };
 
   const getProductData = async () => {
-    console.log(`getProductData()`);
+    // console.log(`getProductData()`);
     await timeoutPromise(timeout);
     const product = {
       name: "Product Name",
@@ -112,7 +112,7 @@ const createApi = (timeout: number) => {
       image: "/images/product-placeholder.jpg",
     };
 
-    console.log(`getProductData() completed`);
+    // console.log(`getProductData() completed`);
     return product;
   };
 

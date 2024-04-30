@@ -2,6 +2,8 @@ import { serverApi } from "../../data";
 import { FeaturedProduct, ForYouProducts, TrendingProducts } from "./_client";
 
 export default async function HomePage() {
+  console.warn("Hello HomePage 1");
+
   const [featuredData, trendingData, forYouData] = await Promise.all([
     serverApi.getFeaturedProductData(),
     serverApi.getTrendingData(),

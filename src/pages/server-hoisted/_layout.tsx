@@ -4,7 +4,7 @@ import { Link } from "waku";
 type HoistedLayoutProps = { children: ReactNode };
 
 export default function HoistedLayout({ children }: HoistedLayoutProps) {
-  console.log(`<HoistedLayout />`);
+  // console.log(`<HoistedLayout />`);
 
   return (
     <div className="font-['Nunito']">
@@ -19,7 +19,7 @@ export default function HoistedLayout({ children }: HoistedLayoutProps) {
         />
         <div className="p-2 text-white flex gap-2">
           <Link
-            to="/hoisted/account"
+            to="/server-hoisted/account"
             className="px-3 py-2 rounded hover:underline hover:bg-white hover:bg-opacity-20 transition-all"
           >
             Account

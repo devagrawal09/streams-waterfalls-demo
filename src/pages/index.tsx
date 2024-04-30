@@ -10,9 +10,14 @@ export default function HomePage() {
             Client Component Fetching
           </button>
         </Link>
-        <Link to="/hoisted">
+        <Link to="/client-hoisted">
           <button className="w-96 h-16 bg-green-500 text-white text-2xl rounded hover:bg-green-700 transition-colors">
-            Hoisted Fetching
+            Client Hoisted Fetching
+          </button>
+        </Link>
+        <Link to="/server-hoisted">
+          <button className="w-96 h-16 bg-teal-500 text-white text-2xl rounded hover:bg-green-700 transition-colors">
+            Server Hoisted Fetching
           </button>
         </Link>
         <Link to="/server">

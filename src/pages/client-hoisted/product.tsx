@@ -1,8 +1,29 @@
-// product.tsx
+"use client";
 import { Link } from "waku";
+import { clientApi } from "../../data";
+import { ProductDetailsSkeleton } from "../../skeletons";
+import { useQuery } from "../../hooks";
 
-export default async function ProductPage() {
-  const product = await getProductData();
+export default function ProductPage() {
+  if (typeof window === "undefined") {
+    return null;
+  }
+  return (
+    <div>
+      <h1>Product Details</h1>
+      <ProductDetails />
+    </div>
+  );
+}
+
+function ProductDetails() {
+  console.log(`<ProductPage />`);
+
+  const product = useQuery(clientApi.getProductData);
+
+  if (!product) {
+    return <ProductDetailsSkeleton />;
+  }
 
   return (
     <div className="w-full px-8 py-4">
@@ -20,31 +41,11 @@ export default async function ProductPage() {
               Add to Cart
             </button>
           </div>
-          <Link to="/" className="mt-4 inline-block underline">
+          <Link to="/client-hoisted/" className="mt-4 inline-block underline">
             Return to Home
           </Link>
         </div>
       </div>
-      {/* Additional sections for reviews, related products, etc. can be added here */}
     </div>
   );
 }
-
-const getProductData = async () => {
-  // Fetch product data based on productId
-  // This is a placeholder for actual data fetching logic
-  const product = {
-    name: "Product Name",
-    description: "This is a detailed description of the product.",
-    price: "49.99",
-    image: "/images/product-placeholder.jpg",
-  };
-
-  return product;
-};
-
-export const getConfig = async () => {
-  return {
-    render: "static",
-  };
-};
