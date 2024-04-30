@@ -125,5 +125,5 @@ const createApi = (timeout: number) => {
   };
 };
 
-export const clientApi = createApi(3000);
+export const clientApi = createApi(1000);
 export const serverApi = createApi(1000);

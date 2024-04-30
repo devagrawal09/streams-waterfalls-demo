@@ -7,30 +7,18 @@ export default function HomePage() {
   return (
     <div className="w-full px-8">
       <title>Bad E-Comm Demo</title>
-      <div className="grid grid-cols-2 gap-16">
-        <div className="rounded px-8 py-2">
-          <h2 className="text-center text-3xl">Trending</h2>
-          <div className="mt-4">
-            <Suspense fallback={<FeaturedProductSkeleton />}>
-              <FeaturedProduct />
-            </Suspense>
-            <Suspense
-              fallback={
-                <>
-                  <ProductListSkeleton />
-                  <ProductListSkeleton />
-                  <ProductListSkeleton />
-                </>
-              }
-            >
-              <TrendingProducts />
-            </Suspense>
+      <Suspense fallback={"Loading products..."}>
+        <div className="grid grid-cols-2 gap-16">
+          <div className="rounded px-8 py-2">
+            <h2 className="text-center text-3xl">Trending</h2>
+            {/* <Suspense fallback={<FeaturedProductSkeleton />}> */}
+            <FeaturedProduct />
+            {/* </Suspense> */}
           </div>
-        </div>
-        <div className="rounded px-8 py-2">
-          <h2 className="text-center text-3xl">For You</h2>
-          <div className="mt-4">
-            <Suspense
+          <div className="rounded px-8 py-2">
+            <h2 className="text-center text-3xl">For You</h2>
+            <div className="mt-4">
+              {/* <Suspense
               fallback={
                 <>
                   <ProductListSkeleton />
@@ -38,12 +26,13 @@ export default function HomePage() {
                   <ProductListSkeleton />
                 </>
               }
-            >
+            > */}
               <ForYouProducts />
-            </Suspense>
+              {/* </Suspense> */}
+            </div>
           </div>
         </div>
-      </div>
+      </Suspense>
     </div>
   );
 }
@@ -54,16 +43,29 @@ const FeaturedProduct = async () => {
   const featuredData = await serverApi.getFeaturedProductData();
 
   return (
-    <Link to="/server/product">
-      <div className="mb-4 gap-8 cursor-pointer hover:shadow-lg transition-shadow">
-        <div className="w-full h-64 bg-gray-400 bg-gradient-to-tr from-orange-500 to-yellow-300 rounded" />
-        <div className="text-right m-2">
-          <h3 className="text-xl">{featuredData.name}</h3>
-          <p>{featuredData.description}</p>
-          <span className="text-lg font-bold">${featuredData.price}</span>
+    <div className="mt-4">
+      <Link to="/server/product">
+        <div className="mb-4 gap-8 cursor-pointer hover:shadow-lg transition-shadow">
+          <div className="w-full h-64 bg-gray-400 bg-gradient-to-tr from-orange-500 to-yellow-300 rounded" />
+          <div className="text-right m-2">
+            <h3 className="text-xl">{featuredData.name}</h3>
+            <p>{featuredData.description}</p>
+            <span className="text-lg font-bold">${featuredData.price}</span>
+          </div>
         </div>
-      </div>
-    </Link>
+      </Link>
+      {/* <Suspense
+          fallback={
+            <>
+              <ProductListSkeleton />
+              <ProductListSkeleton />
+              <ProductListSkeleton />
+            </>
+          }
+        > */}
+      <TrendingProducts />
+      {/* </Suspense> */}
+    </div>
   );
 };
 

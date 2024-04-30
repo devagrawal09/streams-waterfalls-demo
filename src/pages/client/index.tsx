@@ -16,10 +16,7 @@ export default function HomePage() {
       <div className="grid grid-cols-2 gap-16">
         <div className="rounded px-8 py-2">
           <h2 className="text-center text-3xl">Trending</h2>
-          <div className="mt-4">
-            <FeaturedProduct />
-            <TrendingProducts />
-          </div>
+          <FeaturedProduct />
         </div>
         <div className="rounded px-8 py-2">
           <h2 className="text-center text-3xl">For You</h2>
@@ -40,16 +37,19 @@ const FeaturedProduct = () => {
   if (!featuredData) return <FeaturedProductSkeleton />;
 
   return (
-    <Link to="/client/product">
-      <div className="mb-4 gap-8 cursor-pointer hover:shadow-lg transition-shadow">
-        <div className="w-full h-64 bg-gray-400 bg-gradient-to-tr from-orange-500 to-yellow-300 rounded" />
-        <div className="text-right m-2">
-          <h3 className="text-xl">{featuredData.name}</h3>
-          <p>{featuredData.description}</p>
-          <span className="text-lg font-bold">${featuredData.price}</span>
+    <div className="mt-4">
+      <Link to="/client/product">
+        <div className="mb-4 gap-8 cursor-pointer hover:shadow-lg transition-shadow">
+          <div className="w-full h-64 bg-gray-400 bg-gradient-to-tr from-orange-500 to-yellow-300 rounded" />
+          <div className="text-right m-2">
+            <h3 className="text-xl">{featuredData.name}</h3>
+            <p>{featuredData.description}</p>
+            <span className="text-lg font-bold">${featuredData.price}</span>
+          </div>
         </div>
-      </div>
-    </Link>
+      </Link>
+      <TrendingProducts />
+    </div>
   );
 };
 

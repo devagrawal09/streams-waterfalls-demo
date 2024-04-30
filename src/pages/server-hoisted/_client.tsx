@@ -15,6 +15,7 @@ interface ProductData {
 
 interface FeaturedProductProps {
   featuredData: ProductData | null;
+  trendingData: ProductData[] | null;
 }
 
 interface TrendingProductsProps {
@@ -31,6 +32,7 @@ interface ProductDetailsProps {
 
 export const FeaturedProduct: React.FC<FeaturedProductProps> = ({
   featuredData,
+  trendingData,
 }) => {
   console.warn("Hello HomePage 2");
   // console.log(`<FeaturedProduct />`);
@@ -38,16 +40,19 @@ export const FeaturedProduct: React.FC<FeaturedProductProps> = ({
   if (!featuredData) return <FeaturedProductSkeleton />;
 
   return (
-    <Link to="/server-hoisted/product">
-      <div className="mb-4 gap-8 cursor-pointer hover:shadow-lg transition-shadow">
-        <div className="w-full h-64 bg-gray-400 bg-gradient-to-tr from-orange-500 to-yellow-300 rounded" />
-        <div className="text-right m-2">
-          <h3 className="text-xl">{featuredData.name}</h3>
-          <p>{featuredData.description}</p>
-          <span className="text-lg font-bold">${featuredData.price}</span>
+    <div className="mt-4">
+      <Link to="/server-hoisted/product">
+        <div className="mb-4 gap-8 cursor-pointer hover:shadow-lg transition-shadow">
+          <div className="w-full h-64 bg-gray-400 bg-gradient-to-tr from-orange-500 to-yellow-300 rounded" />
+          <div className="text-right m-2">
+            <h3 className="text-xl">{featuredData.name}</h3>
+            <p>{featuredData.description}</p>
+            <span className="text-lg font-bold">${featuredData.price}</span>
+          </div>
         </div>
-      </div>
-    </Link>
+      </Link>
+      <TrendingProducts trendingData={trendingData} />
+    </div>
   );
 };
 
