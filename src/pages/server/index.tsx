@@ -7,18 +7,18 @@ export default function HomePage() {
   return (
     <div className="w-full px-8">
       <title>Bad E-Comm Demo</title>
-      <Suspense fallback={"Loading products..."}>
-        <div className="grid grid-cols-2 gap-16">
-          <div className="rounded px-8 py-2">
-            <h2 className="text-center text-3xl">Trending</h2>
-            {/* <Suspense fallback={<FeaturedProductSkeleton />}> */}
-            <FeaturedProduct />
-            {/* </Suspense> */}
-          </div>
-          <div className="rounded px-8 py-2">
-            <h2 className="text-center text-3xl">For You</h2>
-            <div className="mt-4">
-              {/* <Suspense
+      {/* <Suspense fallback={"Loading products..."}> */}
+      <div className="grid grid-cols-2 gap-16">
+        <div className="rounded px-8 py-2">
+          <h2 className="text-center text-3xl">Trending</h2>
+          {/* <Suspense fallback={<FeaturedProductSkeleton />}> */}
+          <FeaturedProduct />
+          {/* </Suspense> */}
+        </div>
+        <div className="rounded px-8 py-2">
+          <h2 className="text-center text-3xl">For You</h2>
+          <div className="mt-4">
+            {/* <Suspense
               fallback={
                 <>
                   <ProductListSkeleton />
@@ -27,12 +27,12 @@ export default function HomePage() {
                 </>
               }
             > */}
-              <ForYouProducts />
-              {/* </Suspense> */}
-            </div>
+            <ForYouProducts />
+            {/* </Suspense> */}
           </div>
         </div>
-      </Suspense>
+      </div>
+      {/* </Suspense> */}
     </div>
   );
 }

@@ -1,14 +1,24 @@
 import { serverApi } from "../../data";
 import { FeaturedProduct, ForYouProducts, TrendingProducts } from "./_client";
 
-export default async function HomePage() {
-  console.warn("Hello HomePage 1");
-
+export async function loader() {
   const [featuredData, trendingData, forYouData] = await Promise.all([
     serverApi.getFeaturedProductData(),
     serverApi.getTrendingData(),
     serverApi.getForYouData(),
   ]);
+
+  return {
+    featuredData,
+    trendingData,
+    forYouData,
+  };
+}
+
+export default async function HomePage() {
+  console.warn("Hello HomePage 1");
+
+  const { featuredData, trendingData, forYouData } = await loader();
 
   return (
     <div className="w-full px-8">
